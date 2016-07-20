@@ -21,21 +21,24 @@
 					</div>
 					<div class="timeline-panel">
 						<div class="timeline-heading">
-							<!-- <h4 class="timeline-title">
-								<span
-									th:text="${#strings.capitalize(timelineEntity.getType().toLowerCase())}" />
-							</h4> -->
 
 							<div class="col-md-12 post-header-line">
-								<img class="avatar img-circle" th:src="${timelineEntity.getProfilePicture()}" /> <a
-									href="#"><span th:text="${timelineEntity.getCreatorName()}"></span></a>
-								| <span class="glyphicon glyphicon-calendar"> </span><span
+								<img class="avatar img-circle"
+									th:src="${timelineEntity.getProfilePicture()}" /> <a
+									th:href="${timelineEntity.getProfileUrl()}"><span
+									th:text="${timelineEntity.getCreatorName()}"></span></a> | <span
+									class="glyphicon glyphicon-calendar"> </span><span
 									th:text="${timelineEntity.getCreationTime().toString()}"></span>
 							</div>
-							<br /> <br />
+							<br /> <small><a th:href="${timelineEntity.getLink()}">
+									<span th:if="${timelineEntity.getStory() != null}"
+									th:text="${timelineEntity.getStory()}" />
+							</a> </small>
+
 
 						</div>
 						<div class="timeline-body">
+
 							<span th:text="${timelineEntity.getText()}" />
 							<hr></hr>
 							<div class="btn-group">

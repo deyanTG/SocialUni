@@ -26,8 +26,14 @@ public abstract class SocialEntity {
 	public abstract String getLink();
 
 	public abstract String getText();
-	
+
 	public abstract String getType();
-	
+
 	public abstract String getProfilePicture();
+
+	public abstract String getProfileUrl();
+
+	public abstract String getStory();
+
+	public abstract String getPicture();
 }

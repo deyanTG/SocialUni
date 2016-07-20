@@ -49,4 +49,19 @@ public class TwitterSocialEntity extends SocialEntity {
 		return entity.getProfileImageUrl();
 	}
 
+	@Override
+	public String getProfileUrl() {
+		return entity.getUser().getUrl();
+	}
+
+	@Override
+	public String getStory() {
+		return null;
+	}
+
+	@Override
+	public String getPicture() {
+		return null;
+	}
+
 }

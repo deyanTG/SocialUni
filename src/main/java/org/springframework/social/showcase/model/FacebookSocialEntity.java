@@ -56,6 +56,20 @@ public class FacebookSocialEntity extends SocialEntity {
 		this.profilePictureUrl = profilePictureUrl;
 	}
 
-	
-	
+	@Override
+	public String getProfileUrl() {
+		return String.format("https://www.facebook.com/profile.php?id=%s", entity.getFrom().getId());
+	}
+
+	@Override
+	public String getStory() {
+		return entity.getStory();
+	}
+
+	@Override
+	public String getPicture() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
