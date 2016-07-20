@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:social="http://spring.io/springsocial"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Social App</title>
+</head>
+<body>
+	<div id="nav"></div>
+
+	<div id="content" layout:fragment="content" class="container">
+		<div class="row row-main">
+			<p>
+				Welcome, <span th:text="${account.firstName}">first-name</span>!
+			</p>
+
+			<form method="POST" th:action="@{/signout}">
+				<input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+				<button>Sign Out</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

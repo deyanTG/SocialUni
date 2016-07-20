@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:social="http://spring.io/springsocial"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Social app</title>
+</head>
+<body>
+	<div id="nav"></div>
+
+	<div id="content" layout:fragment="content" class="container">
+		<div class="row row-main">
+			<div class="accountConnection" th:each="providerId : ${providerIds}">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							<img th:src="@{#{${providerId} + '.icon'}}" width="36"
+								height="36" /><span th:text="#{${providerId} + '.displayName'}">provider
+								name</span>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<span th:if="${!#lists.isEmpty(connectionMap[__${providerId}__])}">
+							You are connected to <span
+							th:text="#{${providerId} + '.displayName'}">provider name</span>
+							as <span
+							th:text="${connectionMap[__${providerId}__][0].displayName}">user
+								display name</span>.
+						</span> <span th:if="${#lists.isEmpty(connectionMap[__${providerId}__])}">
+							You are not yet connected to <span
+							th:text="#{${providerId} + '.displayName'}">provider name</span>.
+						</span> Click <span class="bold"><a
+							th:href="@{'/connect/' + ${providerId}}">here</a></span> to manage your
+						<span th:text="#{${providerId} + '.displayName'}">provider
+							name</span> connection.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:social="http://spring.io/springsocial"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Social app</title>
+</head>
+<body>
+	<div id="nav">Left nav menu</div>
+
+	<div id="content" layout:fragment="content" class="container">
+		<div class="row row-main">
+			<h3>
+				Your Facebook Photo Album: <span th:text="${album.name}">album
+					name</span>
+			</h3>
+
+			<span th:each="photo : ${photos}"> <img
+				th:src="${photo.images[0].source}" align="middle" />
+			</span>
+		</div>
+	</div>
+</body>
+</html>

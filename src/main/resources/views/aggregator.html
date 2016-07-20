@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:social="http://spring.io/springsocial"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Social App</title>
+</head>
+<body>
+	<div id="nav"></div>
+
+	<div id="content" layout:fragment="content" class="container">
+		<ul class="timeline">
+			<div th:each="timelineEntity,iterStat : ${timeline.getEntities()}">
+				<li
+					th:classappend="${iterStat.odd}? 'timeline-inverted' : 'no-inverted'">
+					<div class="timeline-badge"
+						th:classappend="${timelineEntity.getSocialEntityType().toString() == 'FACEBOOK'} ? facebookColor : twitterColor">
+						<i
+							th:class="${timelineEntity.getSocialEntityType().toString() == 'FACEBOOK'} ? 'fa fa-facebook-square' : 'fa fa-twitter-square'"></i>
+					</div>
+					<div class="timeline-panel">
+						<div class="timeline-heading">
+							<!-- <h4 class="timeline-title">
+								<span
+									th:text="${#strings.capitalize(timelineEntity.getType().toLowerCase())}" />
+							</h4> -->
+
+							<div class="col-md-12 post-header-line">
+								<img class="avatar img-circle" th:src="${timelineEntity.getProfilePicture()}" /> <a
+									href="#"><span th:text="${timelineEntity.getCreatorName()}"></span></a>
+								| <span class="glyphicon glyphicon-calendar"> </span><span
+									th:text="${timelineEntity.getCreationTime().toString()}"></span>
+							</div>
+							<br /> <br />
+
+						</div>
+						<div class="timeline-body">
+							<span th:text="${timelineEntity.getText()}" />
+							<hr></hr>
+							<div class="btn-group">
+								<button type="button"
+									class="btn btn-primary btn-sm dropdown-toggle"
+									data-toggle="dropdown">
+									<i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li class="divider"></li>
+									<li><a href="#">Separated link</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+			</div>
+		</ul>
+	</div>
+
+</body>
+</html>

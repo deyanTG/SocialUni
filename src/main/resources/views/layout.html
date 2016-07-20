@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:social="http://spring.io/springsocial"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Social app</title>
+
+<!-- Bootstrap Core CSS -->
+<link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet" />
+
+<!-- Font Icons -->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"
+	rel="stylesheet" />
+
+<!-- Font Style -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"
+	rel="stylesheet" type="text/css" />
+
+<!-- Animate -->
+<link th:href="@{/resources/css/animate.css}" rel="stylesheet" />
+
+<!-- Bootsnav -->
+<link th:href="@{/resources/css/bootsnav.css}" rel="stylesheet" />
+<link th:href="@{/resources/css/overwrite.css}" rel="stylesheet" />
+<link th:href="@{/resources/skins/color.css}" rel="stylesheet" />
+<link th:href="@{/resources/css/social-buttons.css}" rel="stylesheet" />
+<link
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+	rel="stylesheet" />
+</head>
+<body>
+	<div id="nav">
+		<nav class="navbar navbar-default navbar-fixed-top bootsnav">
+			<div class="container">
+
+				<div class="attr-nav">
+					<ul>
+						<li><a th:href="@{/signout}"><span
+								class="glyphicon glyphicon-log-out"></span></a></li>
+					</ul>
+				</div>
+
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target="#navbar-menu">
+						<i class="fa fa-bars"></i>
+					</button>
+					<a class="navbar-brand" th:href="@{/connect}"><img
+						th:src="@{/resources/images/download.jpg}" class="logo" alt="" /></a>
+				</div>
+				<!-- End Header Navigation -->
+
+
+				<div class="collapse navbar-collapse" id="navbar-menu">
+
+					<ul class="nav navbar-nav navbar-center">
+
+						<li><a th:href="@{/aggregator/feed}">Timeline</a></li>
+						<li><a th:href="@{/profile}">Profile</a></li>
+						<li><a th:href="@{/facebook}">Facebook <span
+								social:connected="facebook"
+								class="glyphicon glyphicon-ok-circle" style="color: green"></span></a></li>
+						<li><a th:href="@{/twitter}">Twitter <span
+								social:connected="twitter" class="glyphicon glyphicon-ok-circle"
+								style="color: green"></span></a></li>
+						<li><a href="#">Google+</a></li>
+					</ul>
+				</div>
+
+				<!-- /.navbar-collapse -->
+			</div>
+		</nav>
+	</div>
+	<div class="clearfix"></div>
+	<!-- /#page-content-wrapper -->
+	<div id="content" layout:fragment="content" class="container"></div>
+
+	<div class="nav navbar-default navbar-fixed-bottom footer">
+		<div class="container">
+			<hr />
+			<div class="text-center center-block">
+				<a href="https://www.facebook.com"><i id="social-fb"
+					class="fa fa-facebook-square fa-3x social"></i></a> <a
+					href="https://twitter.com"><i id="social-tw"
+					class="fa fa-twitter-square fa-3x social"></i></a> <a
+					href="https://plus.google.com"><i id="social-gp"
+					class="fa fa-google-plus-square fa-3x social"></i></a>
+			</div>
+		</div>
+	</div>
+
+	<!-- START JAVASCRIPT -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script th:src="@{/resources/js/bootstrap.min.js}"></script>
+
+	<!-- Bootsnavs -->
+	<script th:src="@{/resources/js/bootsnav.js}"></script>
+</body>
+</html>
